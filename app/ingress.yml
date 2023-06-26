@@ -1,0 +1,32 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:                                              # used to provide additional metadata or configuration to the Kubernetes resources that they are attached to.
+    #kubernetes.io/ingress.class: alb                        # used to specify which Ingress controller should handle the incoming traffic for a given Ingress resource. 
+                                                                    # Type: (Ingress controller,NGINX Ingress Controller, Traefik Ingress Controller. )
+    alb.ingress.kubernetes.io/scheme: internet-facing       # specify that the created Application Load Balancer (ALB) should be accessible over the internet.
+    alb.ingress.kubernetes.io/target-type: ip               # it tells the ALB to route traffic to the individual IP addresses of the pods that are part of the Kubernetes Service. 
+  
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - pathType: Exact 
+            path: /
+            backend:
+              service:
+                name: app-service
+                port:
+                  number: 80
+          
+          # - pathType: Exact
+          #   path: /
+          #   backend:
+          #     service:
+          #       name: apa-service
+          #       port:
+          #         number: 80
+    
