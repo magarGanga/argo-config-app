@@ -6,7 +6,7 @@ metadata:
 spec: 
   project: default
   source: 
-    repoURL: https://github.com/magarGanga/k8s-argo-config-app.git
+    repoURL: https://github.com/magarGanga/argo-config-app.git
     targetRevision: HEAD
     path: app
   
