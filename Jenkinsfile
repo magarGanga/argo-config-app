@@ -21,7 +21,7 @@ pipeline {
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
-                    sh "sed -i 'app-service${DOCKERTAG}' app/deployment.yml"
+                    sh "sed -i 'Service${DOCKERTAG}' app/deployment.yml"
                     sh "cat app/deployment.yml"
                     sh "git diff app/deployment.yml"
                     sh "git add ."
