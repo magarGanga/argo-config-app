@@ -6,7 +6,7 @@ pipeline {
         IMAGE_TAG="latest" 
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
     } 
-    
+
     agent any
     stages {      
 
@@ -28,7 +28,7 @@ pipeline {
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
-                    sh """sed -i 's/024942939275\\.dkr\\.ecr\\.us-east-1\\.amazonaws.com\\/test123:*/024942939275\\.dkr\\.ecr\\.us-east-1.amazonaws\\.com\\/test123:${DOCKERTAG}/g' app/deployment.yml"""
+                    sh """sed -i 's/${AWS_ACCOUNT_ID}\\.dkr\\.ecr\\.${AWS_DEFAULT_REGION}\\.amazonaws.com\\/${IMAGE_REPO_NAME}:*/${AWS_ACCOUNT_ID}\\.dkr\\.ecr\\.${AWS_DEFAULT_REGION}.amazonaws\\.com\\/${IMAGE_REPO_NAME}:${DOCKERTAG}/g' app/deployment.yml"""
                     sh "git add ."
                     sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                     sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/argo-config-app.git HEAD:master"
