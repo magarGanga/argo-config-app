@@ -21,7 +21,7 @@ pipeline {
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
-                    sh "sed -i 's/\(.*\).amazonaws.com/024942939275.dkr.ecr.us-east-1.amazonaws.com/test123:${DOCKERTAG}/g' app/deployment.yml"
+                    sh "sed -i 's/app/updateapp/g' app/deployment.yml"
                     // sh "cat app/deployment.yml"
                     // sh "git diff app/deployment.yml"
                     sh "git add ."
