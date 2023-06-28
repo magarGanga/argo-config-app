@@ -22,7 +22,7 @@ pipeline {
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
                     sh "sed -i 'app-service${DOCKERTAG}' app/deployment.yml"
-                    sh "cat app/deployment.yaml"
+                    sh "cat app/deployment.yml"
                     sh "git add ."
                     sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                     sh "git push https://github.com/magarGanga/argo-config-app.git HEAD:master"
