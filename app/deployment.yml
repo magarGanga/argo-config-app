@@ -1,21 +1,21 @@
-apiVersion: updateupdateapps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: updateupdateapp-deployment
+  name: app-deployment
   labels:
-    updateupdateapp: updateupdateapp
+    app: app
 spec:
   replicas: 2
   selector:
     matchLabels:
-      updateupdateapp: updateupdateapp
+      app: app
   template:
     metadata:
       labels:
-        updateupdateapp: updateupdateapp
+        app: app
     spec:
       containers:
-      - name: updateupdateapp
+      - name: app
         image: 024942939275.dkr.ecr.us-east-1.amazonaws.com/test123:40 
         ports:
           - containerPort: 80
@@ -28,10 +28,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: updateupdateapp-service
+  name: app-service
 spec:
   selector:
-    updateupdateapp: updateupdateapp
+    app: app
   # type: LoadBalancer
   ports:
     - protocol: TCP
