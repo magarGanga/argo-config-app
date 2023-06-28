@@ -21,7 +21,7 @@ pipeline {
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
-                    sh "sed -i 'app-service${DOCKERTAG}' deployment.yml"
+                    sh "sed -i 'app-service${DOCKERTAG}' app/deployment.yml"
                     // sh "cat deployment.yaml"
                     // sh "git add ."
                     // sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
