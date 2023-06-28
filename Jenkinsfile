@@ -20,7 +20,7 @@ pipeline {
                     sh "git config user.email ganga_magar@hotmail.com"
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
-                    sh "cat app/deployment.yaml"
+                    sh "cat app/deployment.yml"
                     sh "sed -i '550160070801.dkr.ecr.us-east-1.amazonaws.com/test123:${DOCKERTAG}+g' deployment.yaml"
                     // sh "cat deployment.yaml"
                     // sh "git add ."
