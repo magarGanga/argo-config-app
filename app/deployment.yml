@@ -1,38 +1,76 @@
 apiVersion: apps/v1
+pp-service52
 kind: Deployment
+pp-service52
 metadata:
+pp-service52
   name: app-deployment
+pp-service52
   labels:
+pp-service52
     app: app
+pp-service52
 spec:
+pp-service52
   replicas: 2
+pp-service52
   selector:
+pp-service52
     matchLabels:
+pp-service52
       app: app
+pp-service52
   template:
+pp-service52
     metadata:
+pp-service52
       labels:
+pp-service52
         app: app
+pp-service52
     spec:
+pp-service52
       containers:
+pp-service52
       - name: app
+pp-service52
         image: 550160070801.dkr.ecr.us-east-1.amazonaws.com/test123:40 
+pp-service52
         ports:
+pp-service52
           - containerPort: 80
+pp-service52
         resources:
+pp-service52
             requests:
+pp-service52
               cpu: 500m # 0.5
+pp-service52
             limits:
+pp-service52
               cpu: 1000m # 1
+pp-service52
 ---
+pp-service52
 apiVersion: v1
+pp-service52
 kind: Service
+pp-service52
 metadata:
+pp-service52
   name: app-service
+pp-service52
 spec:
+pp-service52
   selector:
+pp-service52
     app: app
+pp-service52
   # type: LoadBalancer
+pp-service52
   ports:
+pp-service52
     - protocol: TCP
+pp-service52
       port: 80
+pp-service52
