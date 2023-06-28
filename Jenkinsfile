@@ -1,5 +1,11 @@
 pipeline {
-   
+    environment {
+        AWS_ACCOUNT_ID="550160070801"
+        AWS_DEFAULT_REGION="us-east-1" 
+        IMAGE_REPO_NAME="test123"
+        IMAGE_TAG="latest" 
+        REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
+    } 
     agent any
     stages {      
 
@@ -21,7 +27,7 @@ pipeline {
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
-                    sh "sed -i 's/app/updateapp/g' app/deployment.yml"
+                    sh "sed -i 's/${REPOSITORY_URI}:*/${REPOSITORY_URI}:${env.BUILD_NUMBER}/g' app/deployment.yml"
                     // sh "cat app/deployment.yml"
                     // sh "git diff app/deployment.yml"
                     sh "git add ."
