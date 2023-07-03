@@ -24,7 +24,7 @@ spec:
               cpu: 500m # 0.5
             limits:
               cpu: 1000m # 1
-              
+
 ---
 apiVersion: v1
 kind: Service
@@ -33,7 +33,7 @@ metadata:
 spec:
   selector:
     app: app
-  # type: LoadBalancer
+  type: LoadBalancer
   ports:
     - protocol: TCP
       port: 80
