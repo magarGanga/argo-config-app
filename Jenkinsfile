@@ -28,6 +28,7 @@ pipeline {
                     sh "git config user.name magarGanga"
                     sh "git checkout master"
                     sh "cat app/deployment.yml"
+                    
                     sh """sed -i 's/${AWS_ACCOUNT_ID}\\.dkr\\.ecr\\.${AWS_DEFAULT_REGION}\\.amazonaws.com\\/${IMAGE_REPO_NAME}*/${AWS_ACCOUNT_ID}\\.dkr\\.ecr\\.${AWS_DEFAULT_REGION}.amazonaws\\.com\\/${IMAGE_REPO_NAME}:${DOCKERTAG}/g' app/deployment.yml"""
                     sh "git add ."
                     sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
